@@ -1,0 +1,57 @@
+{% load static %}
+{% load render_bundle from webpack_loader %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% render_bundle frontend_app_style_slug 'css' %}
+    <link rel="stylesheet" href="{% static 'styles/bulma.css' %}">
+    <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
+  </head>
+  <body style="display: flex; min-height: 100vh; flex-direction: column;">
+    <header>
+      <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/">
+            <i class="fab fa-python fa-2x"></i>
+          </a>
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+      </nav>
+    </header>
+    <main style="flex: 1;">
+      <section class="hero is-light">
+        <div class="hero-body">
+          <div class="container has-text-centered">
+            <div class="mount"></div>
+
+          </div>
+        </div>
+        <div class="hero-foot"></div>
+      </section>
+    </main>
+    <footer class="footer is-dark" style="font-size: .9rem; padding-top: .9rem!important; padding-bottom: .9rem!important; background-color: #363636; color: whitesmoke;">
+      <nav class="level">
+        <div class="is-dark has-text-centered level-left">
+          <div class="level-item">
+            <span>Generated from <a class='tag is-small is-rounded is-light' href='https://github.com/audreyr/cookiecutter'>Cookiecutter</a> on {{ date_generated }}</span>
+          </div>
+        </div>
+        <div class="is-dark has-text-centered level-right">
+          <div class="level-item">
+            <a href="https://bulma.io">
+              <img src="https://bulma.io/images/made-with-bulma--white.png" alt="Made with Bulma" width="128" height="24">
+            </a>
+          </div>
+        </div>
+      </nav>
+    </footer>
+  </body>
+  {% render_bundle 'polyfills' 'js' %}
+  {% render_bundle 'commons' 'js' %}
+  {% render_bundle frontend_app_slug 'js' %}
+</html>
